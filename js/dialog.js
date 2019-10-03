@@ -9,6 +9,7 @@
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = document.querySelector('.setup-close');
   var setup = document.querySelector('.setup');
+  var form = document.querySelector('.setup-wizard-form');
   var userNameInput = document.querySelector('.setup-user-name');
   var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
   var wizardCoatInput = document.querySelector('[name=coat-color]');
@@ -16,6 +17,7 @@
   var wizardEyesInput = document.querySelector('[name=eyes-color]');
   var fireball = document.querySelector('.setup-fireball-wrap');
   var fireballInput = document.querySelector('[name=fireball-color]');
+
 
   var dialogHandler = setup.querySelector('.upload');
 
@@ -97,6 +99,17 @@
     var nextColor = getNextColor(fireballInput.value, FIREBALL_COLOR);
     evt.currentTarget.style.backgroundColor = nextColor;
     fireballInput.value = nextColor;
+  });
+
+  var userDialog = document.querySelector('.setup');
+  var closeUserDialog = function () {
+    userDialog.classList.add('hidden');
+  };
+
+
+  form.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), closeUserDialog, window.setup.errorHandler);
   });
 
   dialogHandler.addEventListener('mousedown', function (evt) {
