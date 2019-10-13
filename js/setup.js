@@ -25,20 +25,6 @@
     return element;
   };
 
-  var debounce = function (cb) {
-    var lastTimeout = null;
-
-    return function () {
-      var parameters = arguments;
-      if (lastTimeout) {
-        window.clearTimeout(lastTimeout);
-      }
-      lastTimeout = window.setTimeout(function () {
-        cb.apply(null, parameters);
-      }, DEBOUNCE_INTERVAL);
-    };
-  };
-
   var getNextColor = function (currentColor, colors) {
     var index = colors.indexOf(currentColor);
     return ++index === colors.length ? colors[0] : colors[index];
@@ -113,14 +99,14 @@
     coatColor = getNextColor(wizardCoatInput.value, window.setup.COAT_COLOR);
     evt.currentTarget.style.fill = coatColor;
     wizardCoatInput.value = coatColor;
-    debounce(updateWizards());
+    window.utils.debounce(updateWizards());
   });
 
   wizardEyes.addEventListener('click', function (evt) {
     eyesColor = getNextColor(wizardEyesInput.value, window.setup.EYES_COLOR);
     evt.currentTarget.style.fill = eyesColor;
     wizardEyesInput.value = eyesColor;
-    debounce(updateWizards());
+    window.utils.debounce(updateWizards());
   });
 
   fireball.addEventListener('click', function (evt) {
