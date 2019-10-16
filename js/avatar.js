@@ -3,7 +3,7 @@
   var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
   var fileChooser = document.querySelector('.upload input[type=file]');
-  var preview = document.querySelector('.setup-user-pic')
+  var preview = document.querySelector('.setup-user-pic');
 
   fileChooser.addEventListener('change', function () {
     var file = fileChooser.files[0];

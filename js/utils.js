@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   var DEBOUNCE_INTERVAL = 500; // ms
 
@@ -16,5 +17,5 @@
   };
   window.utils = {
     debounce: debounce
-  }
+  };
 })();
